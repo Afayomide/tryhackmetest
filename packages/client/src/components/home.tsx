@@ -1,18 +1,8 @@
 import { useState, type ChangeEvent } from "react";
 import { API_URL } from "../app";
 import { Link } from "react-router-dom";
+import { Cities,Hotel } from "./types";
 
-type Hotel = {
-  _id: string;
-  chain_name: string;
-  hotel_name: string;
-  city: string;
-  country: string;
-};
-type Cities = {
-  city: string;
-  country: string;
-};
 
 const fetchAndFilterHotels = async (value: string) => {
   const response = await fetch(

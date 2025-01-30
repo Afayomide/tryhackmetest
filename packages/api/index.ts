@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { MongoClient } from "mongodb";
-import { ObjectId } from "mongodb";
 import searchRouter from "./routes/search";
+import hotelRouter from "./routes/hotel"
 
 dotenv.config();
 
@@ -24,26 +24,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", searchRouter);
+app.use("/", hotelRouter)
 
 const db = mongoClient.db();
 
-app.get("/hotel/:id", async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const collection = db.collection("hotels");
-    await mongoClient.connect();
-
-    const hotel = await collection.findOne({ _id: new ObjectId(id) });
-    if (!hotel) {
-      return res.status(404).json({ message: "Hotel not found" });
-    }
-
-    res.json(hotel);
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
 
 app.listen(PORT, () => {
   console.log(`API Server Started at ${PORT}`);

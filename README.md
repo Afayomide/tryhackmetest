@@ -92,6 +92,33 @@ For larger or more time-intensive changes, you're welcome to outline your ideas 
 
 _When all the behaviour is implemented, feel free to add some observations or conclusions you like to share in the section_
 
+My write Up :
+
+# 1. 
+By default I noticed the code was starting the db connection and closing it everytime a route is called. I fixed that by using a opening the connection once when a connection is established.
+
+# 2. 
+By default The filtering was done on the Frontend which is bad for large datasets.
+
+# 3.
+I split the code into controllers, routes
+
+# 3.
+The frontend code was using <a> tag rather than Link from react router dom which is not ideal for routing in a react app
+
+# 4. 
+For seperation of concern the types should have been in a different file so you can import them wherevery you want. Following the DRY rule
+
+# 5. 
+I have added documentation for both the Frontend and backend in their respective folders.
+
+## conclusion
+
+Thank you for the opportunity and I look forward to reviewing my code with the team soon
+
+
+
+
 ### Database structure
 
 #### Hotels Collection

@@ -1,14 +1,8 @@
 import { useState, useEffect } from "react";
 import { API_URL } from "../app";
 import { useParams } from "react-router-dom";
+import { Hotel } from "./types";
 
-type Hotel = {
-  _id: string;
-  chain_name: string;
-  hotel_name: string;
-  city: string;
-  country: string;
-};
 
 export default function SearchResult() {
   const { id } = useParams();
@@ -22,9 +16,9 @@ export default function SearchResult() {
   useEffect(() => {
     fetchHotel();
   }, [id]);
-  return <div>{result ? <div>
-    <h2>{result.hotel_name}</h2>
-    <p>{result.city}</p>
-    <p>{result.country}</p>
+  return <div>{result ? <div className="text-white">
+    <h2><span className="text-dark">Hotel Name: </span>{result.hotel_name}</h2>
+    <p><span className="text-dark"> Country: </span>{result.country}</p>
+    <p><span className="text-dark">City: </span>{result.city}</p>
   </div> : "Loading..."}</div>;
 }
